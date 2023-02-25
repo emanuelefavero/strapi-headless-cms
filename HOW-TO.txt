@@ -1,3 +1,5 @@
+Note: Since at the moment of writing this Strapi isn't compatible with node 19, you need to install node 18. You can do this with nvm by adding an .nvmrc file with the following content: `v18.0.0` and then running `nvm install` and `nvm use`
+
 RUN
 run the strapi server with auto reload
 npm run develop
