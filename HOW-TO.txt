@@ -1,0 +1,56 @@
+RUN
+run the strapi server with auto reload
+npm run develop
+
+run the strapi server without auto reload
+npm run start
+
+HTTP REST CALL
+by default the strapi server runs on port 1337
+http://localhost:1337/
+
+GO TO THE ADMIN PANEL (here you can create, update, delete and query the data)
+http://localhost:1337/admin
+
+FIRST, CREATE TYPES (collections) AND FIELDS (attributes) in the Content Type Builder section
+
+then, CREATE DATA in the Content Manager section
+
+you can follow the steps here (https://docs.strapi.io/dev-docs/quick-start)
+
+to make REST calls to the strapi server you need to add the /api prefix
+http://localhost:1337/api/products
+
+POPULATE
+by default strapi will not generate relations in the REST response, you need to add the populate query parameter to get the relations
+http://localhost:1337/api/products?populate=*
+
+to populate only the categories relation
+http://localhost:1337/api/products?populate[0]=categories
+
+FILTER
+to return only the title and description fields
+http://localhost:1337/api/products?fields[0]=title&fields[1]=description
+
+filter results by title (return only products with title that starts with iPhone), still populate the categories relation
+http://localhost:1337/api/products?populate=categories&filters[title][$startsWithi]=iPhone
+
+filter results by name of the category (return only products with category that starts with Mobile), still populate the categories relation
+http://localhost:1337/api/products?populate=categories&filters[categories.name][$startsWithi]=Mobile
+
+SORT
+sort results by title in ascending order
+http://localhost:1337/api/products?sort=title
+
+sort results by title in descending order
+http://localhost:1337/api/products?sort=title:desc
+
+PAGINATION
+limit the number of results to 1 starting from the first result
+http://localhost:1337/api/products?pagination[start]=0&pagination[limit]=1
+
+limit the number of results to 1 starting from the second result
+http://localhost:1337/api/products?pagination[start]=1&pagination[limit]=1
+
+limit the number of results to 2 starting from the first result
+http://localhost:1337/api/products?pagination[start]=0&pagination[limit]=2
