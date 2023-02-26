@@ -1,5 +1,19 @@
 Note: Since at the moment of writing this Strapi isn't compatible with node 19, you need to install node 18. You can do this with nvm by adding an .nvmrc file with the following content: `v18.0.0` and then running `nvm install` and `nvm use`
 
+CREATE A NEW STRAPI PROJECT
+npx create-strapi-app . --quickstart
+
+Note: by default strapi uses sqlite, but you can change it to mysql or postgresql
+
+CREATE A NEW STRAPI PROJECT WITH POSTGRESQL
+RUN
+npx create-strapi-app .
+- choose Custom (manual settings)
+- choose PostgresSQL
+
+note: you can also use the --ts flag to create a typescript project
+npx create-strapi-app . --quickstart --ts
+
 RUN
 run the strapi server with auto reload
 npm run develop
@@ -56,3 +70,37 @@ http://localhost:1337/api/products?pagination[start]=1&pagination[limit]=1
 
 limit the number of results to 2 starting from the first result
 http://localhost:1337/api/products?pagination[start]=0&pagination[limit]=2
+
+sort results by id in descending order and limit the number of results to 1 starting from the first result
+http://localhost:1337/api/products?sort=id:desc&pagination[limit]=1
+
+-------
+AUTHENTICATION
+create a new user in the user collection. Add username, email and password (if you want to add email confirmation, select confirmed: true when creating the user) and save
+
+Go to the settings section and select the roles and permissions tab. Select the Authenticated role and add all the permissions for the Product, Category and User-Permission (do the same for the Public role, choose the permission you need for the current application)
+
+TEST THE AUTHENTICATION
+go to postman and create a new POST request (select body, raw and JSON)
+note: make sure you have selected JSON, then:
+http://localhost:1337/api/auth/local
+{
+  "identifier": "john",
+  "password": "123456"
+}
+
+If everything is ok, you should get a response with the user data and the jwt token
+
+CREATE A NEW PRODUCT
+grab the jwt token from the previous request and add it to the headers of the new request (Authorization -> Bearer <token>)
+
+make a POST request to the products endpoint
+http://localhost:1337/api/products
+{
+    "data": {
+        "title": "Test product",
+        "description": "test product description.",
+        "price": 199,
+        "qty": 80
+    }
+}
