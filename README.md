@@ -4,6 +4,26 @@ This is a cheat sheet repository for setting up [Strapi](https://strapi.io/) as 
 
 &nbsp;
 
+## Table of Contents
+
+- [Create a new Strapi project](#create-a-new-strapi-project)
+- [Create a new Strapi project with Postgres](#create-a-new-strapi-project-with-postgres)
+- [**Run Strapi in development mode**](#run-strapi-in-development-mode)
+  - [Run Strapi](#run-strapi)
+  - [**Default Server Address**](#default-server-address)
+  - [**Default Admin Panel Address**](#default-admin-panel-address)
+- [Admin Panel](#admin-panel)
+- [REST API Calls](#rest-api-calls)
+  - [**Get all entries**](#get-all-entries)
+  - [**Get one entry**](#get-one-entry)
+- [Populate](#populate)
+- [Filter](#filter)
+- [Sort](#sort)
+- [PAGINATION](#pagination)
+- [**AUTHENTICATION**](#authentication)
+- [Test the authentication](#test-the-authentication)
+  - [**Create a new product**](#create-a-new-product)
+
 ## Create a new Strapi project
 
 - `mkdir <project-name>`
