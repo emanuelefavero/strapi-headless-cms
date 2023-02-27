@@ -23,6 +23,7 @@ This is a cheat sheet repository for setting up [Strapi](https://strapi.io/) as 
 - [**AUTHENTICATION**](#authentication)
 - [Test the authentication](#test-the-authentication)
   - [**Create a new product**](#create-a-new-product)
+- [More Tips](#more-tips)
 
 ## Create a new Strapi project
 
@@ -223,6 +224,16 @@ Sort results by id in descending order and limit the number of results to 1 star
     }
   }
   ```
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## More Tips
+
+- specify `http://127.0.0.1:1337` instead of `http://localhost:1337` in the frontend to prevent `connect ECONNREFUSED error`
 
 &nbsp;
 
